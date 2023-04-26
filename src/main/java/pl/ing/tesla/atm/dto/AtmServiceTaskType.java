@@ -1,6 +1,6 @@
 package pl.ing.tesla.atm.dto;
 
-public enum AtmRequestType {
+public enum AtmServiceTaskType {
 
     FAILURE_RESTART(1),
     PRIORITY(2),
@@ -9,7 +9,7 @@ public enum AtmRequestType {
 
     private final int priority;
 
-    AtmRequestType(int priority) {
+    AtmServiceTaskType(int priority) {
         this.priority = priority;
     }
 
