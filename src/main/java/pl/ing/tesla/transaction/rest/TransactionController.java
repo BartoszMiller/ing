@@ -1,4 +1,4 @@
-package pl.ing.tesla.transaction;
+package pl.ing.tesla.transaction.rest;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

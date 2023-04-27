@@ -1,4 +1,4 @@
-package pl.ing.tesla.game;
+package pl.ing.tesla.game.rest;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
