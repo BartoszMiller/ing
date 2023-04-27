@@ -4,8 +4,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.ing.tesla.atm.dto.Atm;
-import pl.ing.tesla.atm.dto.AtmServiceTask;
+import pl.ing.tesla.atm.model.Atm;
+import pl.ing.tesla.atm.model.AtmServiceTask;
 
 import java.util.List;
 

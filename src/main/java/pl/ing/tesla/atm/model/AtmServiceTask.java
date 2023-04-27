@@ -1,4 +1,4 @@
-package pl.ing.tesla.atm.dto;
+package pl.ing.tesla.atm.model;
 
 import java.util.Comparator;
 

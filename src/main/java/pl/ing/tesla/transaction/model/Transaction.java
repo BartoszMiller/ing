@@ -1,4 +1,4 @@
-package pl.ing.tesla.transaction.dto;
+package pl.ing.tesla.transaction.model;
 
 import java.math.BigDecimal;
 

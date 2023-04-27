@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.ing.tesla.game.dto.Clan;
-import pl.ing.tesla.game.dto.Group;
-import pl.ing.tesla.game.dto.Players;
+import pl.ing.tesla.game.model.Clan;
+import pl.ing.tesla.game.model.Group;
+import pl.ing.tesla.game.model.Players;
 
 import java.util.ArrayList;
 import java.util.List;

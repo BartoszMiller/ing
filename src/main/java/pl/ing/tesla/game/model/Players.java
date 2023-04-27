@@ -1,4 +1,4 @@
-package pl.ing.tesla.game.dto;
+package pl.ing.tesla.game.model;
 
 import java.util.List;
 

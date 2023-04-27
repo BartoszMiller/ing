@@ -4,8 +4,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.ing.tesla.transaction.dto.AccountReport;
-import pl.ing.tesla.transaction.dto.Transaction;
+import pl.ing.tesla.transaction.model.AccountReport;
+import pl.ing.tesla.transaction.model.Transaction;
 
 import java.util.Collection;
 import java.util.List;
