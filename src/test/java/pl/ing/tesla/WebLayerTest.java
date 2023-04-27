@@ -4,7 +4,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -18,14 +19,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest
+@SpringBootTest
+@AutoConfigureMockMvc
 class WebLayerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @ParameterizedTest()
-    @MethodSource("provideUrlAndRequestAndResponse")
+    @MethodSource("getApiUrlAndRequestAndResponse")
     void apiShouldReturnExpectedResponse(String url, String request, String response) throws Exception {
 
         String requestJson = getFileAsString(request);
@@ -39,7 +41,7 @@ class WebLayerTest {
                 .andExpect(content().json(responseJson));
     }
 
-    public static Stream<Arguments> provideUrlAndRequestAndResponse() {
+    public static Stream<Arguments> getApiUrlAndRequestAndResponse() {
         return Stream.of(
                 Arguments.of("/atms/calculateOrder", "/atm/example_1_request.json", "/atm/example_1_response.json"),
                 Arguments.of("/atms/calculateOrder", "/atm/example_2_request.json", "/atm/example_2_response.json"),

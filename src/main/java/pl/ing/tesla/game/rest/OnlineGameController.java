@@ -4,37 +4,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.ing.tesla.game.model.Clan;
 import pl.ing.tesla.game.model.Group;
 import pl.ing.tesla.game.model.Players;
+import pl.ing.tesla.game.service.OnlineGameService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/onlinegame")
 public class OnlineGameController {
 
-    @PostMapping("/calculate")
-    public List<Group> groupClans(@RequestBody Players players) {
-        final List<Group> groups = new ArrayList<>();
-        for (Clan clan : players.clans().stream().sorted().toList()) {
-            boolean added = addClanToExistingGroups(players.groupCount(), groups, clan);
-            if (!added) {
-                groups.add(new Group(clan));
-            }
-        }
-        return groups;
+    private final OnlineGameService onlineGameService;
+
+    public OnlineGameController(OnlineGameService onlineGameService) {
+        this.onlineGameService = onlineGameService;
     }
 
-    private boolean addClanToExistingGroups(int groupCount, List<Group> groups, Clan clan) {
-        boolean added = false;
-        for (Group group : groups) {
-            if (group.getNumberOfPlayers() + clan.numberOfPlayers() <= groupCount) {
-                added = group.add(clan);
-                break;
-            }
-        }
-        return added;
+    @PostMapping("/calculate")
+    public List<Group> groupClans(@RequestBody Players players) {
+        return onlineGameService.groupClans(players);
     }
 }

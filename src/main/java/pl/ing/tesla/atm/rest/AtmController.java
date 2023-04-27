@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.ing.tesla.atm.model.Atm;
 import pl.ing.tesla.atm.model.AtmServiceTask;
+import pl.ing.tesla.atm.service.AtmService;
 
 import java.util.List;
 
@@ -13,12 +14,14 @@ import java.util.List;
 @RequestMapping("/atms")
 public class AtmController {
 
+    private final AtmService atmService;
+
+    public AtmController(AtmService atmService) {
+        this.atmService = atmService;
+    }
+
     @PostMapping("/calculateOrder")
     public List<Atm> calculateAtmsOrder(@RequestBody List<AtmServiceTask> atmServiceTasks) {
-        return atmServiceTasks.stream()
-                .sorted()
-                .map(r -> new Atm(r.region(), r.atmId()))
-                .distinct()
-                .toList();
+        return atmService.calculateAtmsOrder(atmServiceTasks);
     }
 }
