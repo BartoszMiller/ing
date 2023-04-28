@@ -22,6 +22,6 @@ public class OnlineGameController {
 
     @PostMapping("/calculate")
     public List<Group> groupClans(@RequestBody Players players) {
-        return onlineGameService.groupClans(players);
+        return onlineGameService.groupClans(players.clans(), players.groupCount());
     }
 }

@@ -3,7 +3,6 @@ package pl.ing.tesla.game.service;
 import org.springframework.stereotype.Service;
 import pl.ing.tesla.game.model.Clan;
 import pl.ing.tesla.game.model.Group;
-import pl.ing.tesla.game.model.Players;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,10 +10,10 @@ import java.util.List;
 @Service
 public class OnlineGameService {
 
-    public List<Group> groupClans(Players players) {
+    public List<Group> groupClans(List<Clan> clans, int groupCount) {
         final List<Group> groups = new ArrayList<>();
-        for (Clan clan : players.clans().stream().sorted().toList()) {
-            boolean added = addClanToExistingGroups(players.groupCount(), groups, clan);
+        for (Clan clan : clans.stream().sorted().toList()) {
+            boolean added = addClanToExistingGroups(groupCount, groups, clan);
             if (!added) {
                 groups.add(new Group(clan));
             }
